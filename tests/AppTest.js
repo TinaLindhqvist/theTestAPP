@@ -19,7 +19,6 @@ driver = new webdriver.Builder().
     'username': username,
     'accessKey': accessKey,
     'name': 'App Test',
-    'build': process.env.BUILD_DATE
   }).
   usingServer("http://" + username + ":" + accessKey + "@ondemand.saucelabs.com:80/wd/hub").build();
 
