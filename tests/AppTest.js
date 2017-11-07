@@ -11,10 +11,6 @@ var webdriver = require('selenium-webdriver'),
     
 var driver;
 
-var url = process.env.APP_URL;
-
-console.log('Testing of the deployed url [' + url + '] is not possible since stage1 is not public');
-
 driver = new webdriver.Builder().
   withCapabilities({
     'browserName': 'firefox',
@@ -22,14 +18,14 @@ driver = new webdriver.Builder().
     'version': '43.0',
     'username': username,
     'accessKey': accessKey,
-    'name': 'OTC Deployed App Test',
+    'name': 'App Test',
     'build': process.env.BUILD_DATE
   }).
   usingServer("http://" + username + ":" + accessKey + "@ondemand.saucelabs.com:80/wd/hub").build();
 
 
-console.log('Testing will be performed using deployed page ' + process.env.TEST_URL);
-driver.get(process.env.TEST_URL);
+console.log('Testing will be performed using deployed page ' + process.env.APP_URL);
+driver.get(process.env.APP_URL);
 driver.getTitle().then(function (title) {
     console.log("title is: " + title);
     console.log('Testing done');
